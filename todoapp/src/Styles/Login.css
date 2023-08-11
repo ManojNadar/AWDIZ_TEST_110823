@@ -1,0 +1,27 @@
+.loginForm {
+  width: 30%;
+  height: 35%;
+  /* border: 3px solid blue; */
+  background-color: grey;
+  border-radius: 5px;
+}
+.loginForm > form {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.loginForm > form > div {
+  width: 100%;
+  margin: 4% 0;
+}
+
+.loginForm > form > div > input {
+  width: 100%;
+  height: 40px;
+  padding-left: 2%;
+}
+
+.headerForm {
+  text-align: center;
+  margin-top: 1%;
+}

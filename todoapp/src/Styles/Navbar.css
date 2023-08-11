@@ -1,0 +1,34 @@
+.nav {
+  width: 100%;
+  height: 10%;
+  background-color: grey;
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 35%;
+  /* border: 2px solid blue; */
+  height: 100%;
+}
+.logo > h1 {
+  padding-top: 2%;
+  text-align: center;
+}
+
+.navigations {
+  width: 60%;
+  height: 100%;
+  /* border: 2px solid orange; */
+  display: flex;
+}
+
+.navigations > a {
+  margin-left: 5%;
+  font-size: 2em;
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+  padding-top: 1%;
+}

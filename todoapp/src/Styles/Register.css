@@ -1,0 +1,38 @@
+.registerContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerForm {
+  width: 35%;
+  height: 57%;
+  /* border: 3px solid blue; */
+  background-color: grey;
+  border-radius: 5px;
+}
+.registerForm > form {
+  width: 90%;
+  margin: 0 auto;
+}
+.registerForm > form > div {
+  width: 100%;
+  margin: 4% 0;
+}
+.registerForm > form > div > input {
+  width: 100%;
+  height: 45px;
+  padding-left: 2%;
+  border-radius: 5px;
+  border: none;
+}
+
+.alreadyUser {
+  padding-left: 5%;
+}
+.alreadyUser > a {
+  color: black;
+  text-decoration: none;
+}

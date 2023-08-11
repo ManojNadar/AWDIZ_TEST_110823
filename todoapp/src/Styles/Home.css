@@ -1,0 +1,6 @@
+.welcomeHome {
+  text-align: center;
+}
+.welcomeHome > p {
+  color: red;
+}

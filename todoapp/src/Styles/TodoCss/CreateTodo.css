@@ -1,0 +1,34 @@
+.createTodoContainer {
+  width: 100%;
+  height: 90%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+}
+
+.createTodoFormSection {
+  width: 35%;
+  height: 43%;
+  /* border: 2px solid blue; */
+  margin-top: 5%;
+  background-color: grey;
+  border-radius: 5px;
+}
+
+.createTodoheader {
+  text-align: center;
+}
+
+.createTodoForm {
+  width: 90%;
+  margin: 0 auto;
+}
+.createTodoForm > div {
+  width: 100%;
+  margin: 3.5% 0;
+}
+.createTodoForm > div > input {
+  width: 100%;
+  height: 50px;
+  padding-left: 2%;
+}
