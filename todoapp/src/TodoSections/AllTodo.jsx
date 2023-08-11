@@ -6,10 +6,12 @@ const AllTodo = () => {
   const [allTodo, setAllTodo] = useState([]);
 
   useEffect(() => {
-    const getTodo = JSON.parse(localStorage.getItem("todolists"));
+    const getTodo = JSON.parse(localStorage.getItem("todolists")) || [];
 
-    if (getTodo) {
+    if (getTodo?.length) {
       setAllTodo(getTodo);
+    } else {
+      setAllTodo([]);
     }
   }, []);
   return (

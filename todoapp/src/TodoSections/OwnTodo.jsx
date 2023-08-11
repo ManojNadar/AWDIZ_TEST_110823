@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const OwnTodo = () => {
   const [ownTodoList, setOwnTodoList] = useState([]);
+  const [curUser, setCurUser] = useState({});
 
   const { state } = useContext(MyContext);
 
@@ -13,25 +14,29 @@ const OwnTodo = () => {
 
   console.log(ownTodoList);
 
-  // useEffect(() => {
-  //   if (!state?.currentuser) {
-  //     route("/login");
-  //   }
-  // }, [state]);
+  useEffect(() => {
+    if (state?.currentuser) {
+      setCurUser(state?.currentuser);
+    } else {
+      setCurUser({});
+    }
+  }, [state]);
 
   useEffect(() => {
-    const curruser = JSON.parse(localStorage.getItem("currenttodouser"));
-    const regUser = JSON.parse(localStorage.getItem("todousers"));
+    const regUser = JSON.parse(localStorage.getItem("todousers")) || [];
 
-    if (curruser) {
-      for (let i = 0; i < regUser[i].length; i++) {
-        if (regUser[i].email === curruser.email) {
+    if (curUser) {
+      for (let i = 0; i < regUser.length; i++) {
+        if (
+          regUser[i].email == curUser.email &&
+          regUser[i].password == curUser.password
+        ) {
           // console.log(regUser[i]);
           setOwnTodoList(regUser[i].ownTodo);
         }
       }
     }
-  }, [ownTodoList]);
+  }, []);
 
   return (
     <>
@@ -39,24 +44,18 @@ const OwnTodo = () => {
 
       <div className="ownTodoHeader">OWN TODOS</div>
 
-      {ownTodoList.length ? (
-        <div className="ownTodoContainer">
-          {ownTodoList.map((item) => (
-            <div>
-              <div className="ownData">
-                <h2>{item.sub}</h2>
-                <h2>{item.desc}</h2>
-              </div>
-              <div className="editDel">
-                <button>Edit</button>
-                <button>Delete</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <h2 className="ownTodoHeader">No Own Todos</h2>
-      )}
+      {/* {ownTodoList.length ? ( */}
+      <div className="ownTodoContainer">
+        {ownTodoList.map((item) => (
+          <div className="ownSingleTodo">
+            <h2>{item.sub}</h2>
+            <h2>{item.desc}</h2>
+          </div>
+        ))}
+      </div>
+      {/* ) : ( */}
+      {/* <h2 className="ownTodoHeader">No Own Todos</h2> */}
+      {/* )} */}
     </>
   );
 };

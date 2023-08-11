@@ -1,27 +1,5 @@
-.ownTodoHeader {
-  text-align: center;
-  font-weight: bolder;
-  font-size: 1.5em;
-  margin-top: 1%;
-}
-
-.ownTodoContainer {
-  width: 90%;
+.ownSingleTodo {
+  /* width: 100%; */
   border: 2px solid red;
-  margin: 1% auto 1% auto;
-  display: flex;
-  justify-content: space-between;
-}
-.ownData {
-  width: 45%;
-  display: flex;
-  justify-content: space-around;
-}
-.editDel {
-  width: 50%;
-  display: flex;
-  justify-content: space-between;
-}
-.editDel > button {
-  width: 45%;
+  margin: 2% 0;
 }
