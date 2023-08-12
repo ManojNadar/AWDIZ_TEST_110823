@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import "../Styles/TodoCss/AllTodo.css";
+import { MyContext } from "../Components/Context/TodoContext";
 
 const AllTodo = () => {
-  const [allTodo, setAllTodo] = useState([]);
+  const [allTodoData, setAllTodoData] = useState([]);
+  const { state } = useContext(MyContext);
 
   useEffect(() => {
-    const getTodo = JSON.parse(localStorage.getItem("todolists")) || [];
-
-    if (getTodo?.length) {
-      setAllTodo(getTodo);
+    if (state?.todoData?.length) {
+      setAllTodoData(state?.todoData);
     } else {
-      setAllTodo([]);
+      setAllTodoData([]);
     }
-  }, []);
+  }, [state]);
   return (
     <>
       <Navbar />
       <h2 className="allTodoheader">All Todos</h2>
 
-      {allTodo.length ? (
+      {allTodoData.length ? (
         <div className="todoContainer">
           <div className="singleTodo">
-            {allTodo.map((item) => (
+            {allTodoData.map((item) => (
               <div className="subDesc" key={item.id}>
                 <h3>Subject : {item.sub}</h3>
                 <h3>Description : {item.desc}</h3>

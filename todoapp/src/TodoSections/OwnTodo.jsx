@@ -16,11 +16,11 @@ const OwnTodo = () => {
 
   // console.log(ownTodoList);
 
-  // useEffect(() => {
-  //   if (!state?.currentuser) {
-  //     route("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!state?.currentuser) {
+      route("/");
+    }
+  }, [state, route]);
 
   useEffect(() => {
     const regUser = JSON.parse(localStorage.getItem("todousers"));
@@ -31,7 +31,6 @@ const OwnTodo = () => {
           regUser[i].email === state?.currentuser?.email &&
           regUser[i].password === state?.currentuser?.password
         ) {
-          // console.log(regUser[i]);
           setOwnTodoList(regUser[i].ownTodo);
         }
       }
@@ -41,6 +40,8 @@ const OwnTodo = () => {
   const deleteSingleTodo = (id) => {
     const currentuser = JSON.parse(localStorage.getItem("currenttodouser"));
     const regUser = JSON.parse(localStorage.getItem("todousers"));
+
+    const allTodoData = JSON.parse(localStorage.getItem("todolists"));
 
     if (currentuser) {
       const filterData = ownTodoList.filter((e) => e.id !== id);

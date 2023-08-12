@@ -9,14 +9,14 @@ const CreateTodo = () => {
     sub: "",
     desc: "",
   });
-  const { state } = useContext(MyContext);
+  const { state, todoList } = useContext(MyContext);
   const route = useNavigate();
 
   useEffect(() => {
-    if (!state?.currentuser) {
+    if (!state?.currentuser?.email) {
       route("/");
     }
-  }, []);
+  }, [state, route]);
 
   const handleCreateTodoForm = (e) => {
     const { name, value } = e.target;
@@ -45,7 +45,7 @@ const CreateTodo = () => {
         }
       }
       getTodoList.push(todoObj);
-      localStorage.setItem("todolists", JSON.stringify(getTodoList));
+      todoList(getTodoList);
       alert("todo added Success");
       setTodo({
         sub: "",

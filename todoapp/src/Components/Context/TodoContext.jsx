@@ -2,17 +2,24 @@ import React, { createContext, useEffect, useReducer } from "react";
 
 export const MyContext = createContext();
 
-const initialState = { currentuser: null };
+const initialState = { currentuser: null, todoData: [] };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
       return {
+        ...state,
         currentuser: action.payload,
       };
     case "LOGOUT":
       return {
+        ...state,
         currentuser: null,
+      };
+    case "TODO":
+      return {
+        ...state,
+        todoData: action.payload,
       };
 
     default:
@@ -22,6 +29,7 @@ const reducer = (state, action) => {
 
 const TodoContext = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  console.log(state.todoData);
 
   const login = (userData) => {
     localStorage.setItem("currenttodouser", JSON.stringify(userData));
@@ -38,6 +46,15 @@ const TodoContext = ({ children }) => {
     });
   };
 
+  const todoList = (todoDataList) => {
+    localStorage.setItem("todolists", JSON.stringify(todoDataList));
+
+    dispatch({
+      type: "TODO",
+      payload: todoDataList,
+    });
+  };
+
   useEffect(() => {
     const getCurrentUser = JSON.parse(localStorage.getItem("currenttodouser"));
     if (getCurrentUser) {
@@ -46,11 +63,17 @@ const TodoContext = ({ children }) => {
         payload: getCurrentUser,
       });
     }
+
+    const allTodo = JSON.parse(localStorage.getItem("todolists"));
+    dispatch({
+      type: "TODO",
+      payload: allTodo,
+    });
   }, []);
 
   return (
     <>
-      <MyContext.Provider value={{ state, login, logout }}>
+      <MyContext.Provider value={{ state, login, logout, todoList }}>
         {children}
       </MyContext.Provider>
     </>
