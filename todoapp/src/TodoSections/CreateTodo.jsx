@@ -12,11 +12,11 @@ const CreateTodo = () => {
   const { state } = useContext(MyContext);
   const route = useNavigate();
 
-  //   useEffect(() => {
-  //     if (!state?.currentuser) {
-  //       route("/login");
-  //     }
-  //   }, []);
+  useEffect(() => {
+    if (!state?.currentuser) {
+      route("/");
+    }
+  }, []);
 
   const handleCreateTodoForm = (e) => {
     const { name, value } = e.target;
@@ -27,7 +27,7 @@ const CreateTodo = () => {
     e.preventDefault();
 
     const { sub, desc } = todo;
-    
+
     if (sub && desc) {
       const getTodoList = JSON.parse(localStorage.getItem("todolists")) || [];
       const regTodoUser = JSON.parse(localStorage.getItem("todousers"));

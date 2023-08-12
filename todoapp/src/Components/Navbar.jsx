@@ -10,13 +10,13 @@ const Navbar = () => {
     <>
       <div className="nav">
         <div className="logo">
-          <h1 onClick={() => route("/")}>My Todo</h1>
+          <h1 onClick={() => route("/")}>Todo</h1>
         </div>
 
         <div className="navigations">
           <NavLink to="/createtodo">Create Todo</NavLink>
-          <NavLink to="/alltodos">All Todos</NavLink>
-          <NavLink to="/owntodo">Own Todos</NavLink>
+          <NavLink to="/alltodos">All Todo's</NavLink>
+          <NavLink to="/owntodo">Own Todo's</NavLink>
           {state?.currentuser ? (
             <NavLink onClick={() => logout()}>LOGOUT</NavLink>
           ) : (
